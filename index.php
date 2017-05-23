@@ -58,8 +58,18 @@ session_start();
                        <!-- Płeć -->
                        <div class="plec div_box">
                          <h4>3) Wybierz płeć: </h4>
+                          <?php 
+                           
+                           if ( isset($_SESSION['error_plec'])) {
+                               
+                               echo '<h4 style="color: red">' . $_SESSION['error_plec'] . '</h4>';
+                               unset($_SESSION['error_plec']);
+                               
+                           }
+                           
+                           ?>
                            <select name="plec" class="form-control">
-                               <option></option>
+                               <option value="null"></option>
                                <option value="Kobieta">Kobieta</option>
                                <option value="Mezczyzna">Mężczyzna</option>
                            </select>
