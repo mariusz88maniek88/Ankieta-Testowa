@@ -42,6 +42,16 @@ session_start();
                        <!-- Podaj swój wiek -->
                        <div class="age div_box">
                           <h4>2) Podaj swój wiek:</h4>
+                           <?php 
+                           
+                           if (isset($_SESSION['error_age'])) {
+                               
+                               echo '<h4 style="color: red">' . $_SESSION['error_age'] . '</h4>';
+                               unset($_SESSION['error_age']);
+                               
+                           }
+                           
+                           ?>
                             <input type="text" name="age" class="form-control input-md">
                        </div>
                        

@@ -4,24 +4,33 @@ session_start();
 require_once 'inc/db_connect.php';
 
 /**
-*   Variables
+*   Instrukcja walidująca Imię lub pseudonim użytkownika
 */
 if ( isset($_POST['name']) ) {
     
     $_name = htmlentities($_POST['name']);
     
-    if ( mb_strlen($_name) < 2 || mb_strlen($_name) > 25 ) {
+    if ( mb_strlen($_name) < 3 || mb_strlen($_name) > 25 ) {
         
-        $_SESSION['error_name'] = 'Pole musi zawierać litery lub cyfry i składac sie conajmniej z 3 znaków. Proszę o poprawne wpisanie swojego imienia.';
+        $_SESSION['error_name'] = 'Proszę o poprawne wpisanie swojego imienia lub pseudonimu.';
         header("Location: index.php");
-    } else {
+    } 
+} 
+
+/**
+*   Instrukcja sprawdzająca wiek 
+*/
+if ( isset($_POST['age']) && is_numeric($_POST['age'])) {
+    
+    $_age = htmlentities($_POST['age']);
+    
+    if ( mb_strlen($_age) > 2 || mb_strlen($_age) < 1 ) {
         
-        echo $_name;
+        $_SESSION['error_age'] = 'Proszę wprowadzić poprawne dane.';
+        header("Location: index.php");
         
     }
-    
 }
-
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     
     $_name = htmlentities($_POST['name']);
