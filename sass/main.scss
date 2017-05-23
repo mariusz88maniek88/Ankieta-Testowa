@@ -1,0 +1,37 @@
+/**
+*
+* Style CSS
+*
+*/
+#content_main {
+    margin-bottom: 10em;
+    .title_form,
+    .div_box,{
+        padding: 2em 0;
+    }
+    .pytanie {
+        padding: 3em 0;
+    }
+    .title_label {
+        font-size: 1.1em;
+    }
+    h4 {
+        color: dodgerblue;
+    }
+    label {
+        input {
+            display: block;
+        }
+    }
+    h1 {
+        text-align: center;
+    }
+}
+
+table {
+    tr {
+        td {
+            padding: 0.2em;
+        }
+    }
+}

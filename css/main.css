@@ -1,0 +1,24 @@
+/**
+*
+* Style CSS
+*
+*/
+#content_main {
+  margin-bottom: 10em; }
+#content_main .title_form, #content_main .div_box {
+  padding: 2em 0; }
+#content_main .pytanie {
+  padding: 3em 0; }
+#content_main .title_label {
+  font-size: 1.1em; }
+#content_main h4 {
+  color: dodgerblue; }
+#content_main label input {
+  display: block; }
+#content_main h1 {
+  text-align: center; }
+
+table tr td {
+  padding: 0.2em; }
+
+/*# sourceMappingURL=main.css.map */
