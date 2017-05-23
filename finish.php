@@ -12,9 +12,13 @@ if ( isset($_POST['name']) ) {
     
     if ( mb_strlen($_name) < 3 || mb_strlen($_name) > 25 ) {
         
-        $_SESSION['error_name'] = 'Proszę o poprawne wpisanie swojego imienia lub pseudonimu.';
+        $_SESSION['error_name'] = '*Proszę o poprawne wpisanie swojego imienia lub pseudonimu.';
         header("Location: index.php");
-    } 
+    }  else {
+        
+        echo $_name . '<br>';
+        
+    }
 } 
 
 /**
@@ -26,14 +30,18 @@ if ( isset($_POST['age']) && is_numeric($_POST['age'])) {
     
     if ( mb_strlen($_age) > 2 || mb_strlen($_age) < 1 ) {
         
-        $_SESSION['error_age'] = 'Proszę wprowadzić poprawne dane.';
+        $_SESSION['error_age'] = '*Proszę wprowadzić poprawne dane.';
         header("Location: index.php");
+        
+    }   else    {
+        
+        echo $_age . '<br>';
         
     }
     
 }   else  {
     
-    $_SESSION['error_age'] = 'Proszę wprowadzić poprawne dane.';
+    $_SESSION['error_age'] = '*Proszę wprowadzić poprawne dane.';
     header("Location: index.php");
     
 }
@@ -60,12 +68,12 @@ if (isset($_POST['plec'])) {
 } 
 
 /**
-*   Instrukcja stan cywilny
+*   Instrukcja sprawdzająca stan cywilny
 */
 if ( isset($_POST['stan_cywil'])) {
     
     $_stanCywil = htmlentities($_POST['stan_cywil']);
-    echo "Działa.";
+    echo $_stanCywil . '<br>';
     
 }   else {
     
@@ -74,6 +82,24 @@ if ( isset($_POST['stan_cywil'])) {
     
 }
 
+/**
+*   Instrukcja sprawdzająca zmienną Pytania 1
+*/
+if ( isset($_POST['pyt1'])  ) {
+    
+    $_pyt1 = htmlentities($_POST['pyt1']);
+    
+    if ( mb_strlen($_pyt1) < 2 || mb_strlen($_pyt1) > 40  ) {
+        $_SESSION['error_pyt1'] = '*Prosze o wpisanie odpowiedzi.';
+        header("Location: index.php");
+        
+        
+        }   else    {
+    
+        echo $_pyt1 . '<br>';
+        
+        }
+}   
 
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     

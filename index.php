@@ -109,15 +109,23 @@ session_start();
                                   <td><input type="radio" name="stan_cywil" class="form-control input-md" value="w separacji"></td>
                                   <td> w separacji </td>
                                </tr>
-                                
-                                
-                                
+                       
                            </table>
                        </div>
                        
                        <!-- Pytania -->
                        <div class="pytanie">
                            <h4>5) Jaka jest Twoja ulubiona dyscyplina sportu?</h4>
+                           <?php 
+                           
+                           if ( isset($_SESSION['error_pyt1']) ) {
+                               
+                               echo '<h4 style="color: red">' . $_SESSION['error_pyt1'] . '</h4>';
+                               unset($_SESSION['error_pyt1']);
+                               
+                           }   
+                           
+                           ?>
                             <input type="text" name="pyt1" class="form-control input-md">
                        </div>
                        
