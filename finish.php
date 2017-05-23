@@ -54,11 +54,27 @@ if (isset($_POST['plec'])) {
                 echo 'Mężczyzna<br>';
                 break;
             case  "null" :
-                $_SESSION['error_plec'] = "**Proszę wybrać płeć.";
+                $_SESSION['error_plec'] = "*Proszę wybrać płeć.";
                 header("Location: index.php"); 
         }
-    
 } 
+
+/**
+*   Instrukcja stan cywilny
+*/
+if ( isset($_POST['stan_cywil'])) {
+    
+    $_stanCywil = htmlentities($_POST['stan_cywil']);
+    echo "Działa.";
+    
+}   else {
+    
+    $_SESSION['error_cywil'] = "*Proszę wybrac jakąś odpowiedż.";
+    header("Location: index.php");
+    
+}
+
+
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     
     $_name = htmlentities($_POST['name']);

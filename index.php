@@ -78,6 +78,16 @@ session_start();
                        <!-- Stan Cywilny -->
                        <div class="stan_cywil div_box">
                           <h4>4) Stan cywilny:</h4>
+                          <?php 
+                           
+                           if ( isset($_SESSION['error_cywil']) ) {
+                               
+                               echo '<h4 style="color: red">' . $_SESSION['error_cywil'] . '</h4>';
+                               unset($_SESSION['error_cywil']);
+                               
+                           }
+                           
+                           ?>
                            <table> 
                                <tr>
                                   <td><input type="radio" name="stan_cywil" class="form-control input-md" value="kawaler / panna"></td>
