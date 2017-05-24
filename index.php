@@ -94,15 +94,15 @@ session_start();
                                   <td> kawaler / panna </td>
                                </tr>
                                <tr>
-                                  <td><input type="radio" name="stan_cywil" class="form-control input-md" value="zonaty / zamezna"></td>
+                                  <td><input type="radio" name="stan_cywil" class="form-control input-md" id="" value="zonaty / zamezna"></td>
                                   <td> żonaty / zamężna </td>
                                </tr>
                                <tr> 
-                                  <td><input type="radio" name="stan_cywil" class="form-control input-md" value="wdowiec / wdowa"></td>
+                                  <td><input type="radio" name="stan_cywil" class="form-control input-md" id="" value="wdowiec / wdowa"></td>
                                   <td> wdowiec / wdowa </td>
                                </tr>
                                <tr>
-                                  <td><input type="radio" name="stan_cywil" class="form-control input-md" value="rozwiedziony / rozwiedziona"></td>
+                                  <td><input type="radio" name="stan_cywil" class="form-control input-md" id="" value="rozwiedziony / rozwiedziona"></td>
                                   <td> rozwiedziony / rozwiedziona </td>
                                </tr>
                                <tr>
@@ -175,6 +175,16 @@ session_start();
                        
                        <div class="pytanie">
                            <h4>7) Jaki masz kolor oczu...?..</h4>
+                             <?php 
+                           
+                               if ( isset($_SESSION['error_pyt3']) ) {
+
+                                   echo '<h4 style="color: red">' . $_SESSION['error_pyt3'] . '</h4>';
+                                   unset($_SESSION['error_pyt3']);
+
+                               }
+
+                               ?>
                               <table>
                                   <tr>
                                     <td><input type="radio" name="pyt3" class="form-control input-md" value="Niebieskie"></td>
@@ -201,6 +211,16 @@ session_start();
                        
                        <div class="pytanie">
                            <h4>8) Lubisz słuchać muzyki.?..</h4>
+                           <?php 
+                           
+                               if ( isset($_SESSION['error_pyt4']) ) {
+
+                                   echo '<h4 style="color: red">' . $_SESSION['error_pyt4'] . '</h4>';
+                                   unset($_SESSION['error_pyt4']);
+
+                               }
+
+                               ?>
                            <table>
                                <tr>
                                    <td><input type="radio" name="pyt4" class="form-control input-md" value="tak"></td>
@@ -215,6 +235,16 @@ session_start();
                        
                        <div class="pytanie">
                            <h4>9) Jak Tak to jakiej?</h4>
+                           <?php 
+                           
+                               if ( isset($_SESSION['error_pyt5']) ) {
+
+                                   echo '<h4 style="color: red">' . $_SESSION['error_pyt5'] . '</h4>';
+                                   unset($_SESSION['error_pyt5']);
+
+                               }
+
+                               ?>
                            <table>
                                <tr>
                                    <td><input type="radio" name="pyt5" class="form-control input-md" value="Disco Polo"></td>

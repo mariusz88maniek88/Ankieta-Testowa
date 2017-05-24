@@ -142,9 +142,57 @@ if ( ! isset($_POST['pyt2']) ) {
 }   else    {
         
     $_pyt2 = $_POST['pyt2'];
-    echo $_pyt2;
+    echo $_pyt2 . '<br>';
         
 }  
+
+/**
+*   Instrukcja sprawdzająca Pytanie 3
+*/
+if ( isset($_POST['pyt3']) ) {
+    
+    $_pyt3 = $_POST['pyt3'];
+    $_SESSION['pyt3'] = $_pyt3;
+    echo $_pyt3  . '<br>';
+    
+}   else    {
+    
+    $_SESSION['error_pyt3'] = '*Proszę o zanaczenie jakiejś odpowiedzi';
+    header("Location: index.php");
+    
+}
+
+/**
+*   Instrukcja sprawdzająca Pytanie 4
+*/
+if ( isset($_POST['pyt4']) ) {
+    
+    $_pyt4 = $_POST['pyt4'];
+    $_SESSION['pyt4'] = $_pyt4;
+    echo $_pyt4  . '<br>';
+    
+}   else    {
+    
+    $_SESSION['error_pyt4'] = '*Proszę o zanaczenie jakiejś odpowiedzi';
+    header("Location: index.php");
+    
+}
+
+/**
+*   Instrukcja sprawdzająca Pytanie 5
+*/
+if ( isset($_POST['pyt5']) ) {
+    
+    $_pyt5 = $_POST['pyt5'];
+    $_SESSION['pyt5'] = $_pyt5;
+    echo $_pyt5  . '<br>';
+    
+}   else    {
+    
+    $_SESSION['error_pyt5'] = '*Proszę o zanaczenie jakiejś odpowiedzi';
+    header("Location: index.php");
+    
+}
 
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     
