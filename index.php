@@ -52,7 +52,7 @@ session_start();
                            }
                            
                            ?>
-                            <input type="text" name="age" class="form-control input-md">
+                            <input type="text" name="age" class="form-control input-md" value="<?php if (isset($_SESSION['age'])) { echo $_SESSION['age']; unset($_SESSION['age']); }   ?>">
                        </div>
                        
                        <!-- Płeć -->
@@ -126,7 +126,7 @@ session_start();
                            }   
                            
                            ?>
-                            <input type="text" name="pyt1" class="form-control input-md">
+                            <input type="text" name="pyt1" class="form-control input-md" value="<?php if (isset($_SESSION['pyt1'])) { echo $_SESSION['pyt1']; unset($_SESSION['pyt1']); }   ?>">
                        </div>
                        
                        <div class="pytanie">
@@ -167,7 +167,7 @@ session_start();
                                  <td> Spotykam się ze znajomymi..</td>
                              </tr>
                              <tr>
-                                <td><input type="radio" name="pyt2" class="form-control input-md" value="7"></td>
+                                <td><input type="radio" name="pyt2_inny1" class="form-control input-md"></td>
                                 <td><input type="text" name="pyt2_inny" class="form-control input-md" placeholder="Inny.."></td>
                              </tr>
                            </table>

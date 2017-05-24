@@ -28,6 +28,7 @@ if ( isset($_POST['name']) ) {
 if ( isset($_POST['age']) && is_numeric($_POST['age'])) {
     
     $_age = htmlentities($_POST['age']);
+    $_SESSION['age'] = $_age;
     
     if ( mb_strlen($_age) > 2 || mb_strlen($_age) < 1 ) {
         
@@ -52,7 +53,7 @@ if ( isset($_POST['age']) && is_numeric($_POST['age'])) {
 */
 if (isset($_POST['plec'])) {
     
-    $_plec = htmlentities($_POST['plec']);
+    $_plec = $_POST['plec'];
         
         switch ($_plec) {
                 
@@ -73,7 +74,7 @@ if (isset($_POST['plec'])) {
 */
 if ( isset($_POST['stan_cywil'])) {
     
-    $_stanCywil = htmlentities($_POST['stan_cywil']);
+    $_stanCywil = $_POST['stan_cywil'];
     echo $_stanCywil . '<br>';
     
 }   else {
@@ -89,6 +90,7 @@ if ( isset($_POST['stan_cywil'])) {
 if ( isset($_POST['pyt1'])  ) {
     
     $_pyt1 = htmlentities($_POST['pyt1']);
+    $_SESSION['pyt1'] = $_pyt1;
     
     if ( mb_strlen($_pyt1) < 2 || mb_strlen($_pyt1) > 40  ) {
         $_SESSION['error_pyt1'] = '*Prosze o wpisanie odpowiedzi.';
@@ -105,17 +107,44 @@ if ( isset($_POST['pyt1'])  ) {
 /**
 *   Instrukcja sprawdzająca Pytanie 2
 */
-if ( isset($_POST['pyt2']) ) {
+if ( ! isset($_POST['pyt2']) ) {
     
-    $_pyt2 = htmlentities($_POST['pyt2']);
-    echo $_pyt2 . '<br>';
-    
+    if (isset($_POST['pyt2_inny1'])   ) {
+        
+        if ( isset($_POST['pyt2_inny'])) {
+            
+            $_pyt2_inny = htmlentities($_POST['pyt2_inny']);
+            
+            if ( mb_strlen($_pyt2_inny) < 2 || mb_strlen($_pyt2_inny) > 100 ) {
+                
+                $_SESSION['error_pyt2'] = '*Proszę o zanaczenie jakiejś odpowiedzi.W przypadku odpowiedzi inny proszę wpisać jednocześnie odpowiedz w polu.';
+                header("Location: index.php");
+                
+            }   else {
+                
+                echo $_pyt2_inny;
+                
+            }
+            
+        }   else    {
+            
+            $_SESSION['error_pyt2'] = '*Proszę o zanaczenie jakiejś odpowiedzi.W przypadku odpowiedzi inny proszę wpisać jednocześnie odpowiedz w polu.';
+            header("Location: index.php");
+            
+        }   
+    }   else    {
+            
+        $_SESSION['error_pyt2'] = '*Proszę o zanaczenie jakiejś odpowiedzi.W przypadku odpowiedzi inny proszę wpisać jednocześnie odpowiedz w polu.';
+        header("Location: index.php"); 
+            
+    }
+        
 }   else    {
-    
-    $_SESSION['error_pyt2'] = 'Proszę o zanaczenie jakiejś odpowiedzi';
-    header("Location: index.php");
-    
-}
+        
+    $_pyt2 = $_POST['pyt2'];
+    echo $_pyt2;
+        
+}  
 
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     
