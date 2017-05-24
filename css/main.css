@@ -17,8 +17,9 @@
   display: block; }
 #content_main h1 {
   text-align: center; }
-
-table tr td {
+#content_main table tr td {
   padding: 0.2em; }
+#content_main table tr td input[type=radio] {
+  width: 15px; }
 
 /*# sourceMappingURL=main.css.map */

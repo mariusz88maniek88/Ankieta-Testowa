@@ -194,6 +194,49 @@ if ( isset($_POST['pyt5']) ) {
     
 }
 
+/**
+*   Instrukcja sprawdzająca pytanie 6
+*/
+if ( ! isset($_POST['pyt6']) ) {
+    
+    if (isset($_POST['pyt6_inny1'])   ) {
+        
+        if ( isset($_POST['pyt6_inny'])) {
+            
+            $_pyt6_inny = htmlentities($_POST['pyt6_inny']);
+            
+            if ( mb_strlen($_pyt6_inny) < 2 || mb_strlen($_pyt6_inny) > 100 ) {
+                
+                $_SESSION['error_pyt6'] = '*Proszę o zanaczenie jakiejś odpowiedzi.W przypadku odpowiedzi inny proszę wpisać jednocześnie odpowiedz w polu.';
+                header("Location: index.php");
+                
+            }   else {
+                
+                echo $_pyt6_inny;
+                
+            }
+            
+        }   else    {
+            
+            $_SESSION['error_pyt6'] = '*Proszę o zanaczenie jakiejś odpowiedzi.W przypadku odpowiedzi inny proszę wpisać jednocześnie odpowiedz w polu.';
+            header("Location: index.php");
+            
+        }   
+    }   else    {
+            
+        $_SESSION['error_pyt6'] = '*Proszę o zanaczenie jakiejś odpowiedzi.W przypadku odpowiedzi inny proszę wpisać jednocześnie odpowiedz w polu.';
+        header("Location: index.php"); 
+            
+    }
+        
+}   else    {
+        
+    $_pyt6 = $_POST['pyt6'];
+    echo $_pyt6 . '<br>';
+        
+}  
+
+
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     
     $_name = htmlentities($_POST['name']);
