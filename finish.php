@@ -9,6 +9,7 @@ require_once 'inc/db_connect.php';
 if ( isset($_POST['name']) ) {
     
     $_name = htmlentities($_POST['name']);
+    $_SESSION['name'] = $_name;
     
     if ( mb_strlen($_name) < 3 || mb_strlen($_name) > 25 ) {
         
@@ -100,6 +101,21 @@ if ( isset($_POST['pyt1'])  ) {
         
         }
 }   
+
+/**
+*   Instrukcja sprawdzająca Pytanie 2
+*/
+if ( isset($_POST['pyt2']) ) {
+    
+    $_pyt2 = htmlentities($_POST['pyt2']);
+    echo $_pyt2 . '<br>';
+    
+}   else    {
+    
+    $_SESSION['error_pyt2'] = 'Proszę o zanaczenie jakiejś odpowiedzi';
+    header("Location: index.php");
+    
+}
 
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     

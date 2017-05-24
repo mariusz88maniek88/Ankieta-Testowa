@@ -36,7 +36,7 @@ session_start();
                            }
                            
                            ?>
-                          <input type="text" name="name" class="form-control input-md"> 
+                          <input type="text" name="name" class="form-control input-md" value="<?php if (isset($_SESSION['name'])) { echo $_SESSION['name']; unset($_SESSION['name']); }   ?>" > 
                        </div>
                        
                        <!-- Podaj swój wiek -->
@@ -131,6 +131,16 @@ session_start();
                        
                        <div class="pytanie">
                            <h4>6) Jak najczęsciej spędza Pan/Pani wolny czas?</h4>
+                           <?php 
+                           
+                           if ( isset($_SESSION['error_pyt2']) ) {
+                               
+                               echo '<h4 style="color: red">' . $_SESSION['error_pyt2'] . '</h4>';
+                               unset($_SESSION['error_pyt2']);
+                               
+                           }
+                           
+                           ?>
                            <table>
                              <tr>
                                 <td><input type="radio" name="pyt2" class="form-control input-md" value="Oglądam tv"></td>
