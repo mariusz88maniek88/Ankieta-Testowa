@@ -3,6 +3,11 @@ session_start();
 
 require_once 'inc/db_connect.php';
 
+?>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+<?php
 /**
 *   Instrukcja walidująca Imię lub pseudonim użytkownika
 */
@@ -122,7 +127,8 @@ if ( ! isset($_POST['pyt2']) ) {
                 
             }   else {
                 
-                echo $_pyt2_inny;
+                $_pyt2 = $_pyt2_inny;
+                echo $_pyt2 . '<br>';
                 
             }
             
@@ -199,7 +205,7 @@ if ( isset($_POST['pyt5']) && ($_POST['pyt5'] == 'Disco Polo' || $_POST['pyt5'] 
 */
 if ( ! isset($_POST['pyt6']) ) {
     
-    if (isset($_POST['pyt6_inny1'])   ) {
+    if (isset($_POST['pyt6_inny1'] )   ) {
         
         if ( isset($_POST['pyt6_inny'])) {
             
@@ -211,8 +217,8 @@ if ( ! isset($_POST['pyt6']) ) {
                 header("Location: index.php");
                 
             }   else {
-                
-                echo $_pyt6_inny;
+                $_pyt6 = $_pyt6_inny;
+                echo $_pyt6 . '<br>';
                 
             }
             
@@ -236,7 +242,7 @@ if ( ! isset($_POST['pyt6']) ) {
         
 }  
 
-if( isset($_name) && isset($_age) && isset($_plec) && isset($_stanCywil) && isset($_pyt1) && (isset($_pyt2) || (isset($_pyt2_inny1) && isset($_pyt2_inny))) && isset($_pyt3) && isset($_pyt4) && isset($_pyt5) && (isset($_pyt6) || (isset($_pyt6_inny1) && isset($_pyt6_inny)))) {
+if( isset($_name) && isset($_age) && isset($_plec) && isset($_stanCywil) && isset($_pyt1) && (isset($_pyt2) || (isset($_pyt2_inny1) && isset($_pyt2_inny))) && isset($_pyt3) && isset($_pyt4) && isset($_pyt5) && ((isset($_pyt6) || isset($_pyt6_inny1) && isset($_pyt6_inny)))) {
     
     /**
     *   Skoro wszystko jest ustawione tworzymy nową baze o nazwie np. ankieta 
@@ -323,7 +329,9 @@ if( isset($_name) && isset($_age) && isset($_plec) && isset($_stanCywil) && isse
 */
 
 ?>
-
+        </div><!-- end div class="col-xs-12" -->
+    </div><!-- end div class="row" -->
+</div><!-- end div class="container" -->
 
 <a href="index.php">Powrót do ankiety...</a>
 
