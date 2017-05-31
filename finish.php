@@ -72,7 +72,7 @@ if (isset($_POST['plec'])) {
 /**
 *   Instrukcja sprawdzająca stan cywilny
 */
-if ( isset($_POST['stan_cywil'])) {
+if ( isset($_POST['stan_cywil']) && ($_POST['stan_cywil'] == 'kawaler / panna' || $_POST['stan_cywil'] == 'zonaty / zamezna' || $_POST['stan_cywil'] == 'wdowiec / wdowa' || $_POST['stan_cywil'] == 'rozwiedziony / rozwiedziona' || $_POST['stan_cywil'] == 'w separacji' )) {
     
     $_stanCywil = $_POST['stan_cywil'];
     echo $_stanCywil . '<br>';
@@ -109,7 +109,7 @@ if ( isset($_POST['pyt1'])  ) {
 */
 if ( ! isset($_POST['pyt2']) ) {
     
-    if (isset($_POST['pyt2_inny1'])   ) {
+    if (isset($_POST['pyt2_inny1'])  ) { 
         
         if ( isset($_POST['pyt2_inny'])) {
             
@@ -149,12 +149,12 @@ if ( ! isset($_POST['pyt2']) ) {
 /**
 *   Instrukcja sprawdzająca Pytanie 3
 */
-if ( isset($_POST['pyt3']) ) {
+if ( isset($_POST['pyt3']) && ($_POST['pyt3'] == 'Niebieskie' || $_POST['pyt3'] == 'Brazowe' || $_POST['pyt3'] == 'Zielone' || $_POST['pyt3'] == 'Piwne' || $_POST['pyt3'] == 'Zielono-Niebieski')) {
     
     $_pyt3 = $_POST['pyt3'];
     $_SESSION['pyt3'] = $_pyt3;
     echo $_pyt3  . '<br>';
-    
+     
 }   else    {
     
     $_SESSION['error_pyt3'] = '*Proszę o zanaczenie jakiejś odpowiedzi';
@@ -181,7 +181,7 @@ if ( isset($_POST['pyt4']) ) {
 /**
 *   Instrukcja sprawdzająca Pytanie 5
 */
-if ( isset($_POST['pyt5']) ) {
+if ( isset($_POST['pyt5']) && ($_POST['pyt5'] == 'Disco Polo' || $_POST['pyt5'] == 'Dance' || $_POST['pyt5'] == 'Techno' || $_POST['pyt5'] == 'Rock' || $_POST['pyt5'] == 'Jazz' || $_POST['pyt5'] == 'Electro' || $_POST['pyt5'] == 'Pop' || $_POST['pyt5'] == 'Hip Hop' || $_POST['pyt5'] == 'Metal' || $_POST['pyt5'] == 'Reagge' || $_POST['pyt5'] == 'Rap') ) {
     
     $_pyt5 = $_POST['pyt5'];
     $_SESSION['pyt5'] = $_pyt5;

@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 ?>
 
 
@@ -178,12 +177,9 @@ session_start();
                              <?php 
                            
                                if ( isset($_SESSION['error_pyt3']) ) {
-
                                    echo '<h4 style="color: red">' . $_SESSION['error_pyt3'] . '</h4>';
                                    unset($_SESSION['error_pyt3']);
-
                                }
-
                                ?>
                               <table>
                                   <tr>
@@ -214,12 +210,9 @@ session_start();
                            <?php 
                            
                                if ( isset($_SESSION['error_pyt4']) ) {
-
                                    echo '<h4 style="color: red">' . $_SESSION['error_pyt4'] . '</h4>';
                                    unset($_SESSION['error_pyt4']);
-
                                }
-
                                ?>
                            <table>
                                <tr>
@@ -238,12 +231,9 @@ session_start();
                            <?php 
                            
                                if ( isset($_SESSION['error_pyt5']) ) {
-
                                    echo '<h4 style="color: red">' . $_SESSION['error_pyt5'] . '</h4>';
                                    unset($_SESSION['error_pyt5']);
-
                                }
-
                                ?>
                            <table>
                                <tr>
