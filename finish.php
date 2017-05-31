@@ -236,6 +236,37 @@ if ( ! isset($_POST['pyt6']) ) {
         
 }  
 
+if( isset($_name) && isset($_age) && isset($_plec) && isset($_stanCywil) && isset($_pyt1) && (isset($_pyt2) || (isset($_pyt2_inny1) && isset($_pyt2_inny))) && isset($_pyt3) && isset($_pyt4) && isset($_pyt5) && (isset($_pyt6) || (isset($_pyt6_inny1) && isset($_pyt6_inny)))) {
+    
+    /**
+    *   Skoro wszystko jest ustawione tworzymy nową baze o nazwie np. ankieta 
+    *   a w niej tworzymy kolumny => id, name, age, plec, stan, pyt1, pyt2, pyt3, pyt4, pyt5, pyt6
+    *   w których będą zapisywane dane i odpowiedzi z ankiety pamietająć o ustawieniu odpowiednich 
+    *   danych w pliku db_connect.php 
+    */
+    $db_connect = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+    
+    if ( !$db_connect->connect_errno ) {
+        
+        $query = "INSERT INTO ankieta VALUES(null, '$_name', '$_age', '$_plec', '$_stanCywil', '$_pyt1', '$_pyt2', '$_pyt3','$_pyt4','$_pyt5','$_pyt6')";
+        
+        if ( $result = $db_connect = mysqli_query($db_connect, $query) ) {
+            
+            echo 'Dziękujemy za wypełnienie ankiety...';
+            
+        }   else    {
+            
+            echo  'Błędne zapytanie do bazy danych';
+            
+        }
+        
+    }   else    {
+        
+        echo 'Nie udało się nawiązać połączenia z baza danych';
+        
+    } 
+    
+}  
 
 /**if ( isset($_POST['name']) && isset($_POST['age'])  && isset($_POST['plec']) && isset($_POST['stan_cywil']) && isset($_POST['pyt1']) && isset($_POST['pyt2']) && isset($_POST['pyt3']) && isset($_POST['pyt4']) && isset($_POST['pyt5']) && isset($_POST['pyt6']) ) {
     
