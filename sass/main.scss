@@ -15,7 +15,7 @@
     .title_label {
         font-size: 1.1em;
     }
-    h4 {
+    h4,h2 {
         color: dodgerblue;
     }
     label {
@@ -35,6 +35,17 @@
                 }
             }
         }
-}
+    }
+    .header {
+        margin-top: 3em;
+        text-align: center;
+    }
+    p {
+        display: inline-block;
+        padding: 0.2em;
+        font-size: 1.1em;
+        font-weight: bold;
+        color: midnightblue;
+    }
 }
 
