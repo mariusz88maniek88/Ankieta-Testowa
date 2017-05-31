@@ -3,11 +3,6 @@ session_start();
 
 require_once 'inc/db_connect.php';
 
-?>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-<?php
 /**
 *   Instrukcja walidująca Imię lub pseudonim użytkownika
 */
@@ -20,11 +15,7 @@ if ( isset($_POST['name']) ) {
         
         $_SESSION['error_name'] = '*Proszę o poprawne wpisanie swojego imienia lub pseudonimu.';
         header("Location: index.php");
-    }  else {
-        
-        echo $_name . '<br>';
-        
-    }
+    }  
 } 
 
 /**
@@ -40,11 +31,7 @@ if ( isset($_POST['age']) && is_numeric($_POST['age'])) {
         $_SESSION['error_age'] = '*Proszę wprowadzić poprawne dane.';
         header("Location: index.php");
         
-    }   else    {
-        
-        echo $_age . '<br>';
-        
-    }
+    }  
     
 }   else  {
     
@@ -63,10 +50,10 @@ if (isset($_POST['plec'])) {
         switch ($_plec) {
                 
             case "Kobieta" :
-                echo 'Kobieta<br>';
+                 $_plec = 'Kobieta';
                 break;
             case  "Mezczyzna" :
-                echo 'Mężczyzna<br>';
+                 $_plec = 'Mężczyzna';
                 break;
             case  "null" :
                 $_SESSION['error_plec'] = "*Proszę wybrać płeć.";
@@ -80,7 +67,6 @@ if (isset($_POST['plec'])) {
 if ( isset($_POST['stan_cywil']) && ($_POST['stan_cywil'] == 'kawaler / panna' || $_POST['stan_cywil'] == 'zonaty / zamezna' || $_POST['stan_cywil'] == 'wdowiec / wdowa' || $_POST['stan_cywil'] == 'rozwiedziony / rozwiedziona' || $_POST['stan_cywil'] == 'w separacji' )) {
     
     $_stanCywil = $_POST['stan_cywil'];
-    echo $_stanCywil . '<br>';
     
 }   else {
     
@@ -102,11 +88,7 @@ if ( isset($_POST['pyt1'])  ) {
         header("Location: index.php");
         
         
-        }   else    {
-    
-        echo $_pyt1 . '<br>';
-        
-        }
+        }  
 }   
 
 /**
@@ -128,7 +110,6 @@ if ( ! isset($_POST['pyt2']) ) {
             }   else {
                 
                 $_pyt2 = $_pyt2_inny;
-                echo $_pyt2 . '<br>';
                 
             }
             
@@ -148,8 +129,7 @@ if ( ! isset($_POST['pyt2']) ) {
 }   else    {
         
     $_pyt2 = $_POST['pyt2'];
-    echo $_pyt2 . '<br>';
-        
+    
 }  
 
 /**
@@ -159,7 +139,6 @@ if ( isset($_POST['pyt3']) && ($_POST['pyt3'] == 'Niebieskie' || $_POST['pyt3'] 
     
     $_pyt3 = $_POST['pyt3'];
     $_SESSION['pyt3'] = $_pyt3;
-    echo $_pyt3  . '<br>';
      
 }   else    {
     
@@ -175,7 +154,6 @@ if ( isset($_POST['pyt4']) ) {
     
     $_pyt4 = $_POST['pyt4'];
     $_SESSION['pyt4'] = $_pyt4;
-    echo $_pyt4  . '<br>';
     
 }   else    {
     
@@ -191,7 +169,6 @@ if ( isset($_POST['pyt5']) && ($_POST['pyt5'] == 'Disco Polo' || $_POST['pyt5'] 
     
     $_pyt5 = $_POST['pyt5'];
     $_SESSION['pyt5'] = $_pyt5;
-    echo $_pyt5  . '<br>';
     
 }   else    {
     
@@ -218,7 +195,6 @@ if ( ! isset($_POST['pyt6']) ) {
                 
             }   else {
                 $_pyt6 = $_pyt6_inny;
-                echo $_pyt6 . '<br>';
                 
             }
             
@@ -238,8 +214,7 @@ if ( ! isset($_POST['pyt6']) ) {
 }   else    {
         
     $_pyt6 = $_POST['pyt6'];
-    echo $_pyt6 . '<br>';
-        
+         
 }  
 
 if( isset($_name) && isset($_age) && isset($_plec) && isset($_stanCywil) && isset($_pyt1) && (isset($_pyt2) || (isset($_pyt2_inny1) && isset($_pyt2_inny))) && isset($_pyt3) && isset($_pyt4) && isset($_pyt5) && ((isset($_pyt6) || isset($_pyt6_inny1) && isset($_pyt6_inny)))) {
@@ -258,7 +233,7 @@ if( isset($_name) && isset($_age) && isset($_plec) && isset($_stanCywil) && isse
         
         if ( $result = $db_connect = mysqli_query($db_connect, $query) ) {
             
-            echo 'Dziękujemy za wypełnienie ankiety...';
+            $dziekujemy =  "<h2>Dziękujemy $_name za wypełnienie ankiety...</h2>";
             
         }   else    {
             
@@ -328,10 +303,41 @@ if( isset($_name) && isset($_age) && isset($_plec) && isset($_stanCywil) && isse
 
 */
 
-?>
-        </div><!-- end div class="col-xs-12" -->
-    </div><!-- end div class="row" -->
-</div><!-- end div class="container" -->
+?>            
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Ankieta</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+   <div id="content_main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 header">
+                         <?php echo $dziekujemy . '<br>';
+                    
+                             echo '<h4>Twoje odpowiedzi:  </h4>';
+                             echo '<br><p>Jak masz na imię: </p>' . $_name  . '<br>';
+                             echo '<p>Twój wiek to: </p>' .$_age  . '<br>';
+                             echo '<p>Jesteś: </p>' . $_plec . '<br>';
+                             echo '<p>Twój stan cywilny: </p>' . $_stanCywil . '<br>';
+                             echo '<p>Pytanie 1 jaka jest Twoja ulubiona dyscyplina sportu odpowiedziałeś/odpowiedziałaś :</p>' . $_pyt1 . '<br>';
+                             echo '<p>Pytanie 2 jak spędzasz wolny czas odpowiedziałeś/odpowiedziałaś: </p>' . $_pyt2 . '<br>';
+                             echo '<p>Pytanie 3 jaki masz kolor oczu odpowiedziałeś/odpowiedziałaś:</p>' . $_pyt3  . '<br>';
+                             echo '<p>Pytanie 4 Czy lubisz słuchać muzyki odpowiedziałeś/odpowiedziałaś:</p>' . $_pyt4  . '<br>';
+                             echo '<p>Pytanie 5 Jakiej odpowiedziałeś/odpowiedziałaś:</p>' . $_pyt5  . '<br>';                              
+                             echo '<p>Pytanie 6 gdzie spędzisz wakacje odpowiedziałeś/odpowiedziałaś:</p>' . $_pyt6 . '<br>';                                                                  
+                             ?>                                                                                                                                        
+                          <br><br>
+                       <a href="index.php">Powrót do ankiety...</a>
+                    </div><!-- end div class="col-xs-12" -->
+                </div><!-- end div class="row" -->
+            </div><!-- end div class="container" -->
+        </div><!-- end div id="content_main" -->
+    </body>
+</html>  
 
-<a href="index.php">Powrót do ankiety...</a>
 
